@@ -21,12 +21,12 @@ def getChoice():
     return int(input(""))
 
 jokesp1 = ["Do you know Joe?", "Why'd the chicken cross the road?"]
-jokesp2 = ["Joe mama!", "To get to the other side!"]
+jokesp2 = ["When the", "Joe mama!"]
 
 def tellJoke():
     index = random.randint(0, len(jokesp1) - 1)
     print(jokesp1[index] + "\n")
-    time.sleep(2)
+    time.sleep(1)
     print(jokesp2[index] + "\n")
 
 def tellTime():
