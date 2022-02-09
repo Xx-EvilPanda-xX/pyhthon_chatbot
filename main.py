@@ -12,10 +12,11 @@ def init():
     return name
 
 def getChoice():
-    print("\n\nPlease enter an option:")
+    print("Please enter an option:")
     print("1) Tell a joke")
     print("2) Tell the time")
     print("3) Check in")
+    print("4) Play a number game")
     print("0) Quit")
     return int(input(""))
 
@@ -30,10 +31,35 @@ def tellJoke():
 
 def tellTime():
     now = datetime.now()
-    print("Here's the date and time as of now: " + now.strftime("%d/%m/%Y %H:%M:%S"))
+    print("Here's the date and time as of now: " + now.strftime("%d/%m/%Y %H:%M:%S\n"))
 
 def checkIn():
-    pass
+    answer = input("How's your day going? (good/bad)\n")
+
+    if (answer == "good"):
+        print("Good to hear!")
+    elif (answer == "bad"):
+        print("Sorry to hear that. :(")
+        if (input("Would you like to hear a joke to cheer you up? (yes/no)\n" ) == "yes"):
+            tellJoke()
+    else:
+        print("I don't understand. Please try again.")
+        checkIn()
+
+def numberGame():
+    number = random.randint(0, 100)
+    guess = int(input("Please enter a number from 0 to 100: "))
+    while (guess != number):
+        if (guess > 100 or guess < 0):
+            print("Out of range!")
+            continue
+        if (guess < number):
+            print("Nope! Try a bigger number.")
+        elif (guess > number):
+            print("Nope! Try a smaller number.")
+        guess = int(input("Please enter a number from 0 to 100: "))
+
+    print("Nice job! The number was " + str(number) + "\n")
 
 name = init()
 
@@ -51,3 +77,6 @@ while (True):
 
     if (choice == 3):
         checkIn()
+
+    if (choice == 4):
+        numberGame()
